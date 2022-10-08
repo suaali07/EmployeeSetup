@@ -1,0 +1,52 @@
+﻿@model IEnumerable<Employee.Models.EmployeeDetail>
+
+@{
+    ViewData["Title"] = "Employee";
+}
+
+<h1>Employee</h1>
+
+<p class="float-right">
+    <a asp-action="Create" class="btn btn-outline-primary">Add New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Employee Name
+            </th>
+            <th>
+                Email
+            </th>
+            <th>
+                Description
+            </th>
+            <th>
+                Department Name
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Emp_Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Emp_Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Emp_Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Emp_Dep_Name)
+            </td>
+            <td>
+                    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ @class="btn btn-outline-success" }) |
+                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ @class="btn btn-outline-danger" })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

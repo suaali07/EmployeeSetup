@@ -1,0 +1,55 @@
+﻿@model Employee.Model.EmployeeDetail
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Employee</h1>
+
+<h4>EmployeeDetail</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="AddEmployee">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <input asp-for="Emp_Id" type="hidden" />
+                <label class="control-label">Employee Name:</label>
+                <input asp-for="Emp_Name" class="form-control" />
+                <span asp-validation-for="Emp_Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Email:</label>
+                <input asp-for="Emp_Email" class="form-control" />
+                <span asp-validation-for="Emp_Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Description:</label>
+                <input asp-for="Emp_Description" class="form-control" />
+                <span asp-validation-for="Emp_Description" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">Departments:</label>
+                <select asp-for="Emp_Dep_Id" class="form-control" asp-items="@(new SelectList(ViewBag.DepDdl, "Dep_Id", "Dep_Name"))"></select>
+                <input asp-for="Emp_Dep_Name" type="hidden" value="@(new SelectList(ViewBag.DepDdl, "Dep_Name", "Dep_Id"))" />
+
+                <input asp-for="Is_Active" type="hidden" value="1" />
+            </div>
+
+            <br />
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-outline-primary" />
+                <a asp-action="EmployeeList" class="btn btn-outline-success">Employee List</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    }

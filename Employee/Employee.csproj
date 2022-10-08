@@ -1,0 +1,56 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>a466e699-ad5d-493f-96ac-baff8690691b</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Models\Departments.cs" />
+    <Compile Remove="Models\EmpContext.cs" />
+    <Compile Remove="Models\EmployeeDetail.cs" />
+    <Compile Remove="Models\ErrorViewModel.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="Views\Employee\Employee.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.9" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.9" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.5">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.9" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Employee.Common">
+      <HintPath>Assemblies\Employee.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Employee.DbModel">
+      <HintPath>Assemblies\Employee.DbModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Employee.Model">
+      <HintPath>Assemblies\Employee.Model.dll</HintPath>
+    </Reference>
+    <Reference Include="Employee.Report">
+      <HintPath>Assemblies\Employee.Report.dll</HintPath>
+    </Reference>
+    <Reference Include="Employee.Repository">
+      <HintPath>Assemblies\Employee.Repository.dll</HintPath>
+    </Reference>
+    <Reference Include="Employee.UserMaintenance">
+      <HintPath>Assemblies\Employee.UserMaintenance.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Models\" />
+  </ItemGroup>
+
+</Project>

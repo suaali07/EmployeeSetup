@@ -1,0 +1,62 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model IEnumerable<Employee.Model.EmployeeDetail>
+
+@{
+    ViewData["Title"] = "Employee";
+}
+
+<h1>Employee</h1>
+
+<p class="float-right">
+    <a asp-action="Create" class="btn btn-outline-primary">Add New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th></th>
+            <th>
+                Employee Name
+            </th>
+            <th>
+                Email
+            </th>
+            <th>
+                Description
+            </th>
+            <th>
+                Department Name
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.ActionLink("Edit", "Create", new {  item.Emp_Id, item.Emp_Name, item.Emp_Email, item.Emp_Description, item.Emp_Dep_Id, item.Is_Active }, new { @class="btn btn-outline-success" }) |
+                    @Html.ActionLink("Delete", "DeleteEmp", new { item.Emp_Id }, new { @class="btn btn-outline-danger", onclick="return confirm('Are You Sure to Delete?')" })
+                </td>
+                <td>
+                    @Html.HiddenFor(modelItem => item.Emp_Id)
+                    @Html.DisplayFor(modelItem => item.Emp_Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Emp_Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Emp_Description)
+                </td>
+                <td>
+                    @Html.HiddenFor(modelItem => item.Emp_Dep_Id)
+                    @Html.HiddenFor(modelItem => item.Is_Active)
+                    @Html.DisplayFor(modelItem => item.Emp_Dep_Name)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
